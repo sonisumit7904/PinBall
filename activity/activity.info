@@ -1,8 +1,8 @@
 [Activity]
-name = HelloWorld
-activity_version = 7
-bundle_id = org.sugarlabs.HelloWorld
-exec = sugar-activity3 activity.HelloWorldActivity
-icon = activity-helloworld
+name = Pin Ball
+activity_version = 1
+bundle_id = org.sugarlabs.PinBall
+exec = sugar-activity3 activity.PinBallActivity
+icon = activity-pinball
 license = GPLv2+
-repository = https://github.com/sugarlabs/hello-world.git
+repository = https://github.com/sonisumit7904/PinBall
