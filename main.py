@@ -10,20 +10,9 @@ from objects.ball import Ball
 from objects.bumper import Bumper
 from objects.brick import Brick
 
-# Window will spawn in exact center
 import os
-from win32api import GetSystemMetrics
-windowX = GetSystemMetrics(0)/2 - constants.gameW/2
-windowY = GetSystemMetrics(1)/2 - constants.gameH/2
-os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (windowX, windowY)
-
-pygame.init()
 from pygame.locals import NOFRAME, DOUBLEBUF #FULLSCREEN
-ctx = pygame.display.set_mode((constants.gameW,constants.gameH), DOUBLEBUF)
-
-ctx.set_alpha(None)
-pygame.display.set_caption("Pinball")
-clock = pygame.time.Clock()
+# Window will spawn in exact center
 
 def listen(running):
     for event in pygame.event.get():
@@ -37,6 +26,17 @@ def listen(running):
     return running
 
 def main():
+    windowX = 568.0
+    windowY = 132.0
+    # print(windowX,windowY)
+    os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (windowX, windowY)
+
+    pygame.init()
+    ctx = pygame.display.set_mode((constants.gameW,constants.gameH), DOUBLEBUF)
+
+    ctx.set_alpha(None)
+    pygame.display.set_caption("Pinball")
+    clock = pygame.time.Clock()
 
     # pygame.mixer.music.play()
     # midline = Rect(199,0,2,600,(0,0,0))
@@ -87,7 +87,7 @@ def main():
         if state == constants.TITLE_SCREEN:
             ctx.blit(images.menu,(0,0))
             playButton.go(ctx)
-            if mouse.mouse['click'] and collisions.rectPoint(playButton,mouse.mouse['pos']):
+            if keyboard.controls['keyEnter']:
                 state = constants.STAGE_ONE
 
         elif state == constants.STAGE_ONE:
@@ -95,8 +95,8 @@ def main():
             if keyboard.controls['keySpace'] and ball.launching and ball.spd[1] == 0:
                 ball.spd[1] = -14
 
-            if keyboard.controls['keyEnter']:
-                ball.reset()
+            # if keyboard.controls['keyEnter']:
+            #     ball.reset()
 
             ctx.fill(constants.colors['bg'])
 

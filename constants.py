@@ -1,4 +1,5 @@
 import pygame
+import os,sys
 pygame.font.init()
 
 # GENERAL VARIABLES
@@ -19,11 +20,12 @@ colors = {
 }
 
 # FONTS
+ttf_path = os.path.join(sys.path[0], "fonts/muli.ttf")
 muli = {
-    "15": pygame.font.Font("fonts/muli.ttf",15),
-    "20": pygame.font.Font("fonts/muli.ttf",20),
-    "30": pygame.font.Font("fonts/muli.ttf",30),
-    "70": pygame.font.Font("fonts/muli.ttf",70)
+    "15": pygame.font.Font(ttf_path,15),
+    "20": pygame.font.Font(ttf_path,20),
+    "30": pygame.font.Font(ttf_path,30),
+    "70": pygame.font.Font(ttf_path,70)
 }
 
 # ACCELERATION // 1.11m/s
